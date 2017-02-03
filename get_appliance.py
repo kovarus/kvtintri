@@ -8,6 +8,7 @@ import argparse
 import getpass
 import kvtintri
 import json
+from prettytable import PrettyTable
 
 def getargs():
     parser = argparse.ArgumentParser()
@@ -40,7 +41,15 @@ def main():
 
     output = session.get_appliance()
 
-    print json.dumps(output, indent=4)
+    # print json.dumps(output, indent=4)
+
+    out = PrettyTable(['locator', 'status', 'state', 'diskType'])
+    out.align['locator'] = 'l'
+    out.padding_width = 1
+    for i in output[0]['disks']:
+        out.add_row((i['locator'], i['status'], i['state'], i['diskType']))
+
+    print out
 
 if __name__ == '__main__':
     main()
