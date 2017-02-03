@@ -295,6 +295,14 @@ class VMStore(object):
         uri = 'datastore/'
         return self._request(uri=uri)
 
+    def get_failed_components(self):
+        uri = 'appliance/{}/failedComponents'.format(self.device)
+        return self._request(uri=uri)
+        # / v310 / appliance / {uuid} / failedComponents
+
+    def get_appliance(self):
+        uri = 'appliance/'
+        return self._request(uri=uri)
 
     def get_view(self, view, request_method='GET', payload=None):
         """
