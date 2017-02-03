@@ -31,13 +31,6 @@ session = kvtintri.VMStore.login(device="10.25.36.10", username="admin", passwor
 session.get_vms(from_name="my_vm_name")
 ```
 
-## Built With
-
-* Atom
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
