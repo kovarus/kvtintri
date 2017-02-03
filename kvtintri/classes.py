@@ -269,7 +269,8 @@ class VMStore(object):
 
     def get_datastore(self, datastore_uuid='default'):
         """Returns a dictionary for the given datastore passed as a string"""
-        uri = 'datastore/' + datastore_uuid
+        # uri = 'datastore/' + str(datastore_uuid)
+        uri = 'datastore/'
         return self._request(uri=uri)
 
     def get_appliances(self):
@@ -289,6 +290,11 @@ class VMStore(object):
         """Returns a specific service group"""
         uri = 'servicegroup/' + service_group_uuid
         return self._request(uri=uri)
+
+    def get_realtime_datastore_performance(self, uuid):
+        uri = 'datastore/'
+        return self._request(uri=uri)
+
 
     def get_view(self, view, request_method='GET', payload=None):
         """
@@ -325,6 +331,8 @@ class Datastore(object):
             print my_datastore.performance_reserve_remaining
 
     """
+    ### CLASS NO LONGER APPEARS TO BE WORKING
+    ###
 
     def __init__(self, datastore):
         self.space_used_gib = datastore['stat']['spaceUsedGiB']
@@ -345,6 +353,10 @@ class Datastore(object):
     @property
     def space_free_percentage(self):
         return 100 - ((self.space_used_gib / self.total_space_gib) * 100)
+
+    def get_realtime_performance(self, session):
+        return session.get_realtime_datastore_performance(self)
+
 
     @classmethod
     def get(cls, session, datastore_uuid=None):
@@ -483,7 +495,7 @@ class VirtualMachine(object):
 class ServiceGroup(object):
     """
     Coming soon!
-    Looks like it requires GlobalCenter and ours is dead
+
     """
     def __init__(self):
         pass
