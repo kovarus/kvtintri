@@ -11,7 +11,7 @@ import getpass
 import argparse
 from prettytable import PrettyTable
 import csv
-
+import getpass
 
 def getargs():
     parser = argparse.ArgumentParser()
@@ -74,6 +74,7 @@ def main():
         for i in vm_list:
             out.add_row((i.name, i.uuid, i.vcenter, i.power_state, i.qos_min_iops, i.qos_max_iops))
 
+        x  = session.get_datastores()
 
     else:
         out = PrettyTable(['Name', 'vCenter', 'Power', 'QoS Min', 'QoS Max'])

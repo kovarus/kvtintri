@@ -71,8 +71,8 @@ def main():
     # TODO add logic here to verify that it actually changed it
 
     print('Virtual machine %s updated' % virtualmachine.name)
-    print('Min IOPS now: ' +  virtualmachine.qos_min_iops)
-    print('Max IOPS now: ' +  virtualmachine.qos_max_iops)
+    print('Min IOPS now: ' +  str(virtualmachine.qos_min_iops))
+    print('Max IOPS now: ' +  str(virtualmachine.qos_max_iops))
 
 if __name__ == '__main__':
     main()
